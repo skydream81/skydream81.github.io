@@ -396,8 +396,9 @@ $("#paytable").on('click','tr a',function(e){
 
 // 다운로드 버튼 클릭 시
 function download() { 
-	if( confirm('전체 건을 일괄 다운로드 하실래요?') )
+	if( confirm('지출내역 전체 건을 일괄 다운로드 하실래요?') )
 	{
+		/*
 		// localStorage에 저장된 데이터를 읽어와 JSON 형식으로 변환
 		let data = {};
 		for (let i = 0; i < localStorage.length; i++) {
@@ -411,8 +412,49 @@ function download() {
 		const blob = new Blob([jsonData], {type: 'application/json'});
 		const link = document.createElement('a');
 		link.href = URL.createObjectURL(blob);
+		//link.download = 'localStorage_backup.json';
 		link.download = 'localStorage_backup.json';
 		link.click();
+		*/
+		/*
+		fetch('https://skydream81.github.io/test.json')
+			.then(res => res.json()) // .json() 메서드는 JSON 응답을 JavaScript 객체 리터럴로 구문분석합니다.
+			.then(data => console.log(data));
+		*/
+		
+		/*
+		const url = 'https://skydream81.github.io/test.json';
+		const data = { 
+		  title: '식료품 구매',
+		  completed: false
+		};
+
+		const jsonData = JSON.stringify(data);
+
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+
+		fetch(url, {
+		  method: 'POST', 
+		  headers: headers,
+		  body: jsonData
+		})
+		.then(response => {
+		  if (!response.ok) {
+			throw new Error(`HTTP 오류! 상태: ${response.status}`);
+		  }
+		  return response.json();
+		})
+		.then(responseData => {
+		  console.log('Todo가 성공적으로 생성되었습니다:', responseData);  
+		})
+		.catch(error => {
+		  console.error('오류:', error);
+		});
+		*/
+		
+		
+		
 		
 	}
 }	
@@ -420,7 +462,7 @@ function download() {
 
 // 업로드 버튼 클릭 시
 function upload() { 
-	if( confirm('전체 건을 일괄 업로드 하실래요?') )
+	if( confirm('지출내역 전체 건을 일괄 업로드 하실래요?') )
 	{
 		//import data from './test.json' assert{ type: "json"} ;
 		/*
@@ -428,7 +470,10 @@ function upload() {
 			.then(res => res.json()) // .json() 메서드는 JSON 응답을 JavaScript 객체 리터럴로 구문분석합니다.
 			.then(data => console.log(data));
 			*/
-		const fs = require('fs');
+		//const fs = require('fs');
+		
+		/*
+		import * as fs from 'fs';
 		let obj = {'a':1, 'b': 2};
 		obj = JSON.stringify(obj);
 		fs.writeFileSync('https://skydream81.github.io/test.json', obj, 'utf-8');
@@ -437,7 +482,7 @@ function upload() {
 			.then(res => res.json()) // .json() 메서드는 JSON 응답을 JavaScript 객체 리터럴로 구문분석합니다.
 			.then(data => console.log(data));
 		
-		
+		*/
 		 
 	}
 }
@@ -446,9 +491,19 @@ function upload() {
 
 // 일괄삭제 버튼 클릭 시
 function alldel() { 
-	if( confirm('전체 건을 일괄적으로 삭제 하실래요?') )
+	if( confirm('지출내역 전체 건을 일괄적으로 삭제 하실래요?') )
 	{
 		window.localStorage.clear();
 		onload();
+	}
+}
+
+
+// 엑셀다운로드 버튼 클릭 시
+function allExcelDown() { 
+	if( confirm('지출내역 전체 건을 일괄적으로 엑셀 다운로드 하실래요?') )
+	{
+		var wb = XLSX.utils.table_to_book(document.getElementById('paytable'), {sheet:"시트명",raw:true});
+		XLSX.writeFile(wb, ('payExcel.xlsx'));
 	}
 }
