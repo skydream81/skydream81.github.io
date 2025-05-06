@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+	<meta charset="UTF-8" />
+    <title>Pay List</title> 
+    <link rel="stylesheet" href="styles.css"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- bootstrap CSS -->
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head> 
+<body onload="onload()"> 
+    <h1>1. 지출내역 등록</h1> 
+    <form id="registform"> 
+        <label for="paydate">지출일자 : </label> 
+        <input type="date" id="paydate" value="2025-05-09" required><br><br> 
+		<label for="category">카테고리 : </label> 
+        <select id="category">
+			<option value="일일생활비">일일생활비</option>
+			<option value="입장료">입장료</option>
+			<option value="교통비">교통비</option>
+			<option value="기타잡비">기타잡비</option>
+			<option value="선물">선물</option>
+			<option value="ETC">ETC</option>
+		</select><br><br> 
+		<label for="payamtaud">지출금액(AUD) : </label> 
+        <input type="text" id="payamtaud"><br><br> 
+		<label for="payamtwon">지출금액(원) : </label> 
+        <input type="text" id="payamtwon"><br><br> 
+		<label for="paycause">지출용도 : </label> 
+        <input type="text" id="paycause" required><br><br> 
+		<label for="elsetext">특이사항 : </label> 
+        <input type="text" id="elsetext"><br><br> 
+		
+        <button type="button" onclick="regist()">지출 등록</button> 
+    </form> 
+	<br><br>
+	<br><br>
+	<h1>2. 지출내역 목록</h1> 
+	<!--<ul id="paylist">
+	</ul> -->
+	<table class="table table-bordered" id="paytable">
+		<thead>
+			<tr>
+				<th>지출일자</th>
+				<th>카테고리</th>
+				<th>지출금액(AUD)</th>
+				<th>지출금액(원)</th>
+				<th>지출용도</th>
+				<th>특이사항</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+	
+	<br><br>
+	<br><br>
+	<h1>3. 카테고리별 지출 통계</h1> 
+	<table class="table table-bordered" id="stattable">
+		<thead>
+			<tr>
+				<th>카테고리</th>
+				<th>전체금액(원/AUD)</th>
+				<th>지출금액(원/AUD)</th>
+				<th>잔여금액(원/AUD)</th>
+				<th>사용율(%)</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+	
+	<br><br>
+	<br><br>	
+	<h1>4. 일괄작업</h1> 
+	<button type="button" onclick="download()">다운로드</button>&nbsp;&nbsp;
+	<button type="button" onclick="upload()">업로드</button>&nbsp;&nbsp;
+	<button type="button" onclick="alldel()">일괄삭제</button>
+	<script src="script.js"></script> 
+</body> 
+</html> 
+
+
+
+
+
