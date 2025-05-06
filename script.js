@@ -422,28 +422,9 @@ function download() {
 function upload() { 
 	if( confirm('전체 건을 일괄 업로드 하실래요?') )
 	{
-		//let testData = JSON.parse(JSON.stringify(TestFile));
-		//console.log(testData);
-		/*
-		(fetch("localStorage_backup.json")
-		 .then((response)=>response.json())
-		 .then((json)=>json.items))
-		.then((items)=>{
-			console.log(items);
-		});
-		*/
-		loadItems().then((items) => {
-			console.log(items);
-		});
+		import data from './test.json' assert{ type: "json"} ;
 		 
 	}
-}
-
-function loadItems() {
-	console.log(`${window.location.origin}`);
-	return fetch("aaalocalStorage_backup.json")
-		.then((response) => response.json())
-		.then((json) => json.items);
 }
 
 
