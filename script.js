@@ -422,7 +422,10 @@ function download() {
 function upload() { 
 	if( confirm('전체 건을 일괄 업로드 하실래요?') )
 	{
-		import data from './test.json' assert{ type: "json"} ;
+		//import data from './test.json' assert{ type: "json"} ;
+		fetch('https://skydream81.github.io/test.json')
+			.then(res => res.json()) // .json() 메서드는 JSON 응답을 JavaScript 객체 리터럴로 구문분석합니다.
+			.then(data => console.log(data));
 		 
 	}
 }
