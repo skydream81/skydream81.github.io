@@ -423,9 +423,21 @@ function upload() {
 	if( confirm('전체 건을 일괄 업로드 하실래요?') )
 	{
 		//import data from './test.json' assert{ type: "json"} ;
+		/*
 		fetch('https://skydream81.github.io/test.json')
 			.then(res => res.json()) // .json() 메서드는 JSON 응답을 JavaScript 객체 리터럴로 구문분석합니다.
 			.then(data => console.log(data));
+			*/
+		const fs = require('fs');
+		let obj = {'a':1, 'b': 2};
+		obj = JSON.stringify(obj);
+		fs.writeFileSync('https://skydream81.github.io/test.json', obj, 'utf-8');
+		console.log("aaa");
+		fetch('https://skydream81.github.io/test.json')
+			.then(res => res.json()) // .json() 메서드는 JSON 응답을 JavaScript 객체 리터럴로 구문분석합니다.
+			.then(data => console.log(data));
+		
+		
 		 
 	}
 }
